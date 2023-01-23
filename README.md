@@ -36,17 +36,29 @@ updated it at some point, stripping out the null character by mistake.
 
 In order to be able to output all Unicode characters without storing all of
 Unicode in the keyboard layout, this layout calculates the character to output.
-That is done through "actions", which  are commonly used to create dead keys.
+That is done through "actions", which are commonly used to create dead keys.
 When holding the option key, each successive keypress on hexadecimal numbers
-keys (0-9 plus ABCDEEF) will add that number to the state and multiply by 16,
-with the fourth keypress adding the number from the state to a unicode character
-of corresponding value and output this modified character. In the case of the
-fourth keypress being 0, the corresponding character with value 0 is the null
-character, which is missing. This means there is no character to add to and no
-character to output.
+keys (0-9 plus ABCDEEF) will add that number to the state and multiply by 16. 
+The fourth keypress takes the number from the state, multiplies it by 16,
+and adds the result to a unicode character of corresponding value before 
+outputting this modified character. In the case of the fourth keypress being 0,
+the corresponding character with value 0 is the null character, which is 
+missing. This means there is no character to add to and no character to output.
 
 Manually entering the null character's code where it belongs fixes the
 issue.
+
+With this explanation you might be wondering why only the characters that start
+with a 0 are affected. This because it appears that the system is unable to 
+process a file that has a `when` element matching too large of a range of states.
+There are 4096 combinations of keypresses before the last keypress, so the last
+one would have a `when` element matching a range of 4096 possibilities which is
+too large. They have divided the range in 16 `when` clauses each matching a
+range of 256 possibilities. The `when` element matching state numbers from 1 to 
+256, which correspond to the codes starting with a 0, is the only one actually
+using the null character. The start of the range gets subtracted from the state's
+number, so the other `when` elements use a unicode character of larger value
+that counteracts the subtraction.
 
 #### Fixing the issue in a keylayout file generated with Ukulele
 

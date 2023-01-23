@@ -13,7 +13,7 @@ the option+arrow key shortcuts.
 
 To install this layout:
 
-- Download this file
+- Download the keylayout file in the list above
 - Copy or move it to either
     - `~/Library/Keyboard Layouts/`
     if you want the layout to be activated just for you user or 

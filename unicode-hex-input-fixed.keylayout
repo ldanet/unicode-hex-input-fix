@@ -432,6 +432,7 @@
             <key code="26" action="7"/>
             <key code="28" action="8"/>
             <key code="29" action="0"/>
+            <key code="51" output="&#x0008;"/>
             <key code="82" action="0"/>
             <key code="83" action="1"/>
             <key code="84" action="2"/>
@@ -442,6 +443,7 @@
             <key code="89" action="7"/>
             <key code="91" action="8"/>
             <key code="92" action="9"/>
+            <key code="117" output="&#x007F;"/>
             <key code="123" output="&#x001C;"/>
             <key code="124" output="&#x001D;"/>
             <key code="125" output="&#x001F;"/>

@@ -5,21 +5,45 @@ a code both starting ending in 0 will not output anything. For example the
 character `à` is code `00E0` and is impossible to type with the built in layout
 (as of Jan. 2023).
 
-Using this keylayout instead fixes the issue.
-It also fixes the missing text navigation shorcuts to move and delete word by word
-using the option+arrow key and option+backspace/delete shortcuts.
+Using either of the keylayouts in this repo instead will fix the issue.
+
+## Keylayout variations
+
+### unicode-hex-fixed.keylayout
+
+This is the layout you would end up with by following the instructions below.
+It includes the unicode fix as well as the missing text navigation shorcuts to
+move word by word using the option+arrow key, and the missing shortcuts to
+delete word by word using option+backspace/delete shortcuts.
+
+### unicode-hex-popup.keylayout
+
+I do not remember how I created this layout file. It is a combination of
+the a fixed verision of Unicode Hex Input layout and some other layout that
+opens a popup to give a range of alternate character options when long pressing
+on a key which offers such options. For example, a long press on E will give
+you these options:
+
+```text
+1 2 3 4 5 6 7 8 9
+è é ê ë ě ẽ ē ė ę
+```
+
+This is the layout I use daily. It allows me to type in French easily using my
+custom external keyboard, and not have to change layouts to type French
+characters using the built-in laptop keyboard.
 
 ## Installation
 
 To install this layout:
 
-- Download the keylayout file in the list above
+- Download the keylayout of your choice in file the list above
 - Copy or move it to either
     - `~/Library/Keyboard Layouts/`
     if you want the layout to be activated just for you user or
     - `/Library/Keyboard Layouts/`
         if you want the keyboard to be available system-wide
-- Log out and login again so macOS refreshes its list keyboard layouts
+- Log out and login again so macOS refreshes its list of keyboard layouts
 
 It should be now available to select in
 System Settings > Keyboard > Text input > Input sources > Edit...
@@ -49,7 +73,7 @@ Manually entering the null character's code where it belongs fixes the
 issue.
 
 With this explanation you might be wondering why only the characters that start
-with a 0 are affected. This because it appears that the system is unable to
+with a 0 are affected. This is because it appears that the system is unable to
 process a file that has a `when` element matching too large of a range of states.
 There are 4096 combinations of keypresses before the last keypress, so the last
 one would have a `when` element matching a range of 4096 possibilities which is
